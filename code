@@ -1,0 +1,21 @@
+from web3 import Web3
+
+# Connect to a local Ethereum node (change the URL to your node's URL)
+w3 = Web3(Web3.HTTPProvider('http://localhost:8545'))
+
+# Set the contract address and ABI
+contract_address = '0xContractAddress'
+contract_abi = [
+    # Contract ABI definition
+]
+
+# Create a contract instance
+contract = w3.eth.contract(address=contract_address, abi=contract_abi)
+
+# Estimate gas cost for the transaction
+gas_cost = contract.functions.myFunction().estimateGas({
+    'from': '0xYourAddress',
+    'value': 1000000000000000000,  # Example: Value to send with the transaction (in Wei)
+})
+
+print(f"Estimated gas cost: {gas_cost}")
